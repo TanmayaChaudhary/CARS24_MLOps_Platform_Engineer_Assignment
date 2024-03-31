@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  fastapi:
+    # Build the Docker image from the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Expose port 8000 on the host and map it to port 8000 in the container
+    ports:
+      - "8000:8000"
+    # Define environment variables (optional)
+    environment:
+      - ENVIRONMENT=production
+    # Define container labels (optional)
+    labels:
+      - "com.example.description=FastAPI Dockerized App"
+      - "com.example.department=IT"
+      - "com.example.label=web"
+      - "com.example.version=1.0.0"
+
+    # Define restart policy (optional)
+    restart: always
+
+
+######################################### Command to Build Docker Container Via Docker Compose File ###############################################################################
+## 1. Build the Docker image: Open a terminal in your project directory and run the following command to build the Docker image:
+#     Command to run in CMD :=> docker-compose build
+
+## 2. Run the Docker container: Once the image is built, run the following command to start the Docker container:
+#     Command to run in CMD :=> docker-compose up -d
+
+## 3. Access the FastAPI app: 
+#     You can now access your FastAPI app running in the Docker container by visiting ** http://localhost:8000/predict/ ** in your web browser & provide the image of any 
+#     no. between 0 to 9 or 
+#     using tools like Postman to send requests to ** http://localhost:8000/predict/ **
+#     In Postman attach a file in Body of it as a key value pair & select key type as File :-> file : 2.png
+
+## 4. Stop the Docker container: docker-compose down
+###################################################################################################################################################################################

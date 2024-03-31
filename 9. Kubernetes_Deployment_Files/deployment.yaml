@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-deployment                              # Name of the deployment
+spec:
+  replicas: 2                                           # Number of replicas (pods) to run
+  selector:
+    matchLabels:
+      app: fastapi                                      # Selector to match pods controlled by this deployment
+  template:
+    metadata:
+      labels:
+        app: fastapi                                    # Labels to apply to pods created by this template
+    spec:
+      containers:
+      - name: fastapi-container                         # Name of the container
+        image: your-docker-username/fastapi-app:latest  # Docker image to use for the container
+        ports:
+        - containerPort: 8000                           # Port to expose on the container
+        env:                                              # Environment variables for the pod
+        - name: ENVIRONMENT
+          value: production

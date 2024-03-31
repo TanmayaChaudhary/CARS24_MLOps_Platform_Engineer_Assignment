@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-service      # Name of the service
+spec:
+  selector:
+    app: fastapi             # Selector to match pods that the service should target
+  ports:
+    - protocol: TCP
+      port: 8000             # Port on the service
+      targetPort: 8000       # Port on the pods
+  type: LoadBalancer         # Type of service (LoadBalancer for external access)
